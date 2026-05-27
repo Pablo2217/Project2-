@@ -1229,6 +1229,76 @@
     background: rgba(255, 255, 255, 0.04);
   }
 
+  /* ============ WORKFLOW ============ */
+  .workflow-section {
+    background: var(--bg);
+  }
+
+  .workflow-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .workflow-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+    min-height: 230px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.38);
+    box-shadow: 0 20px 45px -35px rgba(21, 20, 15, 0.35);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .workflow-item::after {
+    content: "";
+    position: absolute;
+    inset: auto -80px -100px auto;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(214, 90, 58, 0.12), transparent 70%);
+    pointer-events: none;
+  }
+
+  .workflow-item:hover {
+    transform: translateY(-6px);
+    border-color: rgba(214, 90, 58, 0.35);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .workflow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    padding-top: 4px;
+  }
+
+  .workflow-item h3 {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .workflow-item p {
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 460px;
+  }
+
+  [data-theme="dark"] .workflow-item {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
   /* ============ TECH STACK ============ */
   .tech-section {
     padding: 100px 0;
@@ -2259,6 +2329,7 @@
     .hero-counters { grid-template-columns: 1fr; gap: 20px; }
     .ai-tools-grid { grid-template-columns: 1fr; }
     .ai-tools-intro { position: static; }
+    .workflow-list { grid-template-columns: 1fr; }
   }
 
   /* Mobile (max 768px) — comprehensive optimization */
@@ -2513,6 +2584,12 @@
     }
     .ai-tools-intro h3 { font-size: clamp(32px, 8vw, 44px); }
     .ai-tools-intro p { font-size: 17px; }
+    .workflow-item {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 26px;
+      min-height: auto;
+    }
   }
 
   /* Touch device fixes — disable hover effects that don't translate */
@@ -2526,6 +2603,7 @@
     .stat-item:hover { box-shadow: none; border-color: var(--line); }
     .case-card:hover { transform: none; }
     .ai-tool-card:hover { transform: none; }
+    .workflow-item:hover { transform: none; }
     .learning-card:hover { transform: none; }
     .service-row:hover { padding-left: 0; }
     .exp-item:hover { padding-left: 0; }
@@ -2561,6 +2639,7 @@
       <li><a href="#about" class="menu-link">About</a></li>
       <li><a href="#skills" class="menu-link">Skills</a></li>
       <li><a href="#ai-tools" class="menu-link">AI Tools</a></li>
+      <li><a href="#workflow" class="menu-link">Workflow</a></li>
       <li><a href="#work" class="menu-link">Work</a></li>
       <li><a href="#case-studies" class="menu-link">Case studies</a></li>
       <li><a href="#learning" class="menu-link">Learning</a></li>
@@ -2583,9 +2662,9 @@
       <li><a href="#about" data-num="01" data-hover>About</a></li>
       <li><a href="#skills" data-num="02" data-hover>Skills</a></li>
       <li><a href="#ai-tools" data-num="03" data-hover>AI</a></li>
-      <li><a href="#work" data-num="04" data-hover>Work</a></li>
-      <li><a href="#services" data-num="07" data-hover>Services</a></li>
-      <li><a href="#experience" data-num="08" data-hover>Experience</a></li>
+      <li><a href="#workflow" data-num="04" data-hover>Workflow</a></li>
+      <li><a href="#work" data-num="05" data-hover>Work</a></li>
+      <li><a href="#experience" data-num="06" data-hover>Experience</a></li>
     </ul>
     <div class="nav-actions">
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
@@ -2876,6 +2955,67 @@
   </div>
 </section>
 
+<!-- WORKFLOW -->
+<section id="workflow" class="workflow-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">04 →</span>
+      <h2 class="section-title">My <em>workflow</em></h2>
+      <div class="section-aside">How I move<br/>from idea to launch</div>
+    </div>
+
+    <div class="workflow-list">
+      <div class="workflow-item">
+        <span class="workflow-num">01</span>
+        <div>
+          <h3>Understand the problem</h3>
+          <p>I start by understanding the goal, users, pain points, and what the final solution needs to achieve.</p>
+        </div>
+      </div>
+
+      <div class="workflow-item">
+        <span class="workflow-num">02</span>
+        <div>
+          <h3>Design the user flow</h3>
+          <p>I map the user journey, plan the structure, and design simple flows before jumping into development.</p>
+        </div>
+      </div>
+
+      <div class="workflow-item">
+        <span class="workflow-num">03</span>
+        <div>
+          <h3>Build the frontend</h3>
+          <p>I create responsive, polished interfaces with clean layouts, reusable components, and smooth interactions.</p>
+        </div>
+      </div>
+
+      <div class="workflow-item">
+        <span class="workflow-num">04</span>
+        <div>
+          <h3>Connect backend/API</h3>
+          <p>I connect the interface with APIs, databases, authentication, and the logic needed to make the product work.</p>
+        </div>
+      </div>
+
+      <div class="workflow-item">
+        <span class="workflow-num">05</span>
+        <div>
+          <h3>Test and deploy</h3>
+          <p>I test the experience, fix issues, optimize performance, and deploy the project so it is ready to use.</p>
+        </div>
+      </div>
+
+      <div class="workflow-item">
+        <span class="workflow-num">06</span>
+        <div>
+          <h3>Improve with feedback</h3>
+          <p>I review how the solution performs, collect feedback, and keep improving the product over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TECH STACK -->
 <section id="tech" class="tech-section">
   <div class="container">
@@ -2932,7 +3072,7 @@
 <section id="work">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">04 →</span>
+      <span class="section-num">05 →</span>
       <h2 class="section-title">Selected <em>work</em></h2>
       <div class="section-aside">Things I've<br/>designed &amp; built</div>
     </div>
@@ -3057,7 +3197,7 @@
 <section id="case-studies" class="case-studies">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">05 →</span>
+      <span class="section-num">—</span>
       <h2 class="section-title">Project <em>case studies</em></h2>
       <div class="section-aside">How I think<br/>and build</div>
     </div>
@@ -3130,7 +3270,7 @@
 <section id="learning" class="learning-section">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">06 →</span>
+      <span class="section-num">—</span>
       <h2 class="section-title">Learning <em>&amp; growth</em></h2>
       <div class="section-aside">Certifications<br/>and practice</div>
     </div>
@@ -3161,7 +3301,7 @@
 <section id="services" class="services-section">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">07 →</span>
+      <span class="section-num">—</span>
       <h2 class="section-title">Ways I can <em>help</em></h2>
       <div class="section-aside">Available for<br/>work</div>
     </div>
@@ -3216,7 +3356,7 @@
 <section id="experience">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">08 →</span>
+      <span class="section-num">06 →</span>
       <h2 class="section-title">Experience <em>&amp;</em> path</h2>
       <div class="section-aside">A short<br/>career timeline</div>
     </div>
