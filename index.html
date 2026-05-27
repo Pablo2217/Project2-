@@ -1221,6 +1221,282 @@
     color: var(--accent);
   }
 
+  /* ============ CASE STUDIES ============ */
+  .case-studies {
+    background: var(--bg);
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+  }
+
+  .case-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: clamp(28px, 4vw, 48px);
+    background: rgba(255, 255, 255, 0.42);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .case-card h3 {
+    font-size: clamp(34px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 28px 0 20px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .case-card > p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 720px;
+  }
+
+  .case-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+  }
+
+  .case-points {
+    display: grid;
+    gap: 22px;
+    margin: 38px 0;
+  }
+
+  .case-points div {
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .case-points span {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+
+  .case-points p {
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .case-link {
+    display: inline-flex;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 6px;
+    transition: color 0.2s, border-color 0.2s, gap 0.2s;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .case-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent-deep);
+  }
+
+  .muted-case {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .muted-case h3 {
+    color: var(--bg);
+  }
+
+  .muted-case p,
+  .muted-case .case-top {
+    color: rgba(245, 243, 237, 0.72);
+  }
+
+  .muted-case .case-points div {
+    border-color: rgba(245, 243, 237, 0.18);
+  }
+
+  .muted-case .case-points p {
+    color: rgba(245, 243, 237, 0.65);
+  }
+
+  .muted-case .case-link {
+    color: var(--bg);
+    border-bottom-color: var(--gold);
+  }
+
+  .muted-case .case-link:hover {
+    color: var(--gold);
+  }
+
+  /* ============ LEARNING ============ */
+  .learning-section {
+    background: var(--bg-alt);
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .learning-card {
+    min-height: 280px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    background: var(--bg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .learning-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .learning-card span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+
+  .learning-card h3 {
+    margin: 28px 0 18px;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .learning-card p {
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+
+  /* ============ SERVICES ============ */
+  .services-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.25s ease;
+  }
+
+  .service-row:hover {
+    padding-left: 12px;
+  }
+
+  .service-row span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+
+  .service-row h3 {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .service-row p {
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* ============ RESUME CTA ============ */
+  .resume-cta {
+    padding: 90px 0;
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .resume-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .resume-label {
+    display: block;
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+  }
+
+  .resume-box h2 {
+    font-size: clamp(38px, 6vw, 76px);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .resume-box p {
+    color: rgba(245, 243, 237, 0.72);
+    font-size: 19px;
+    line-height: 1.55;
+    max-width: 520px;
+  }
+
+  .resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .resume-cta .btn-outline {
+    color: var(--bg);
+    border-color: rgba(245, 243, 237, 0.35);
+  }
+
+  .resume-cta .btn-outline:hover {
+    background: rgba(245, 243, 237, 0.08);
+    border-color: var(--bg);
+    color: var(--bg);
+  }
+
   /* ============ CONTACT ============ */
   .contact {
     background: var(--ink);
@@ -1424,6 +1700,19 @@
     .section-head { grid-template-columns: auto 1fr; }
     .section-aside { display: none; }
     .contact-bottom { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+    .case-grid,
+    .learning-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .service-row:hover { padding-left: 0; }
+    .resume-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   /* Mobile (max 768px) — comprehensive optimization */
@@ -1597,6 +1886,23 @@
     .exp-company { font-size: 17px; margin-bottom: 12px; }
     .exp-content p { font-size: 15px; }
 
+    .case-card,
+    .learning-card {
+      padding: 24px;
+    }
+
+    .case-card h3 { margin: 20px 0 16px; }
+    .case-points { margin: 28px 0; gap: 18px; }
+
+    .resume-actions {
+      width: 100%;
+    }
+
+    .resume-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
     /* CONTACT */
     .contact { padding: 100px 0 60px; }
     .contact h2 {
@@ -1661,6 +1967,9 @@
     .project:hover .project-visual { transform: none; }
     .about-photo:hover img { transform: none; }
     .stat-item:hover { box-shadow: none; border-color: var(--line); }
+    .case-card:hover { transform: none; }
+    .learning-card:hover { transform: none; }
+    .service-row:hover { padding-left: 0; }
     .exp-item:hover { padding-left: 0; }
   }
 
@@ -1693,7 +2002,11 @@
       <li><a href="#about" class="menu-link">About</a></li>
       <li><a href="#skills" class="menu-link">Skills</a></li>
       <li><a href="#work" class="menu-link">Work</a></li>
+      <li><a href="#case-studies" class="menu-link">Case studies</a></li>
+      <li><a href="#learning" class="menu-link">Learning</a></li>
+      <li><a href="#services" class="menu-link">Services</a></li>
       <li><a href="#experience" class="menu-link">Experience</a></li>
+      <li><a href="#resume" class="menu-link">Resume</a></li>
       <li><a href="#contact" class="menu-link">Contact</a></li>
     </ul>
     <a href="#contact" class="mobile-menu-cta menu-link">Get in touch ↗</a>
@@ -1710,7 +2023,8 @@
       <li><a href="#about" data-num="01" data-hover>About</a></li>
       <li><a href="#skills" data-num="02" data-hover>Skills</a></li>
       <li><a href="#work" data-num="03" data-hover>Work</a></li>
-      <li><a href="#experience" data-num="04" data-hover>Experience</a></li>
+      <li><a href="#services" data-num="06" data-hover>Services</a></li>
+      <li><a href="#experience" data-num="07" data-hover>Experience</a></li>
     </ul>
     <div class="nav-actions">
       <a href="#contact" class="nav-cta" data-hover>Get in touch ↗</a>
@@ -1776,7 +2090,7 @@
 <section id="about">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">01 ⟶</span>
+      <span class="section-num">01 →</span>
       <h2 class="section-title">About <em>me</em></h2>
       <div class="section-aside">A short<br/>introduction</div>
     </div>
@@ -1815,7 +2129,7 @@
 <section id="skills" class="skills-bg">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">02 ⟶</span>
+      <span class="section-num">02 →</span>
       <h2 class="section-title">What I <em>do</em></h2>
       <div class="section-aside">Six things<br/>I'm good at</div>
     </div>
@@ -1876,7 +2190,7 @@
 <section id="work">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">03 ⟶</span>
+      <span class="section-num">03 →</span>
       <h2 class="section-title">Selected <em>work</em></h2>
       <div class="section-aside">Things I've<br/>designed &amp; built</div>
     </div>
@@ -1985,11 +2299,170 @@
   </div>
 </section>
 
+<!-- CASE STUDIES -->
+<section id="case-studies" class="case-studies">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">04 →</span>
+      <h2 class="section-title">Project <em>case studies</em></h2>
+      <div class="section-aside">How I think<br/>and build</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-top">
+          <span class="case-label">Featured Project</span>
+          <span class="case-year">2026</span>
+        </div>
+
+        <h3>Tychi Ops</h3>
+        <p>
+          An internal monitoring dashboard designed and built end-to-end for Fundtec,
+          covering system status, service visibility, and operational clarity.
+        </p>
+
+        <div class="case-points">
+          <div>
+            <span>Problem</span>
+            <p>Teams needed a clearer way to monitor systems and understand service health quickly.</p>
+          </div>
+          <div>
+            <span>My Role</span>
+            <p>Solo builder: UI/UX design, frontend, backend, authentication, and deployment.</p>
+          </div>
+          <div>
+            <span>Stack</span>
+            <p>React, Node.js, Figma, REST APIs, monitoring workflows.</p>
+          </div>
+        </div>
+
+        <a href="https://status.tychi.co" target="_blank" rel="noopener" class="case-link" data-hover>
+          View live project →
+        </a>
+      </article>
+
+      <article class="case-card muted-case">
+        <div class="case-top">
+          <span class="case-label">Next Build</span>
+          <span class="case-year">Soon</span>
+        </div>
+
+        <h3>More work coming</h3>
+        <p>
+          I am currently working on more projects that combine product design,
+          full-stack development, and useful internal tools.
+        </p>
+
+        <div class="case-points">
+          <div>
+            <span>Focus</span>
+            <p>Dashboards, admin tools, automation, and clean web experiences.</p>
+          </div>
+          <div>
+            <span>Goal</span>
+            <p>Build products that are simple to use, reliable, and visually sharp.</p>
+          </div>
+        </div>
+
+        <a href="#contact" class="case-link" data-hover>
+          Ask me about it →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS / LEARNING -->
+<section id="learning" class="learning-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">05 →</span>
+      <h2 class="section-title">Learning <em>&amp; growth</em></h2>
+      <div class="section-aside">Certifications<br/>and practice</div>
+    </div>
+
+    <div class="learning-grid">
+      <div class="learning-card">
+        <span>Currently Learning</span>
+        <h3>Advanced Full-stack Development</h3>
+        <p>Improving my skills in scalable frontend architecture, backend APIs, authentication, and deployment.</p>
+      </div>
+
+      <div class="learning-card">
+        <span>Design Practice</span>
+        <h3>UI / UX &amp; Product Thinking</h3>
+        <p>Practicing user flows, interface clarity, dashboard design, and polished visual systems.</p>
+      </div>
+
+      <div class="learning-card">
+        <span>DevOps Focus</span>
+        <h3>Servers, Monitoring &amp; CI/CD</h3>
+        <p>Working with deployments, Linux, monitoring, Git workflows, and production reliability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">06 →</span>
+      <h2 class="section-title">Ways I can <em>help</em></h2>
+      <div class="section-aside">Available for<br/>work</div>
+    </div>
+
+    <div class="services-list">
+      <div class="service-row">
+        <span>01</span>
+        <h3>Portfolio &amp; Business Websites</h3>
+        <p>Clean, responsive websites with modern design and strong presentation.</p>
+      </div>
+
+      <div class="service-row">
+        <span>02</span>
+        <h3>Dashboards &amp; Admin Panels</h3>
+        <p>Internal tools, monitoring dashboards, management panels, and data-driven interfaces.</p>
+      </div>
+
+      <div class="service-row">
+        <span>03</span>
+        <h3>UI / UX Design</h3>
+        <p>Wireframes, product flows, visual design, and interface improvements.</p>
+      </div>
+
+      <div class="service-row">
+        <span>04</span>
+        <h3>DevOps &amp; Deployment Support</h3>
+        <p>Server setup, deployment workflows, Git, monitoring, and basic infrastructure support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME CTA -->
+<section class="resume-cta" id="resume">
+  <div class="container">
+    <div class="resume-box">
+      <div>
+        <span class="resume-label">Resume</span>
+        <h2>Want the quick professional version?</h2>
+        <p>Download my resume or connect with me directly for work opportunities.</p>
+      </div>
+
+      <div class="resume-actions">
+        <a href="resume.pdf" class="btn btn-primary" download data-hover>Download CV</a>
+        <a href="mailto:mramanking@gmail.com" class="btn btn-outline" data-hover>Email me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">04 ⟶</span>
+      <span class="section-num">07 →</span>
       <h2 class="section-title">Experience <em>&amp;</em> path</h2>
       <div class="section-aside">A short<br/>career timeline</div>
     </div>
