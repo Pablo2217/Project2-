@@ -612,15 +612,28 @@
   }
 
   /* ============ ABOUT ============ */
+  #about {
+    padding: 160px 0 180px;
+  }
+  #about .section-head {
+    margin-bottom: 96px;
+    padding-bottom: 40px;
+  }
+
   .about-grid {
     display: grid;
-    grid-template-columns: 0.9fr 1.3fr;
-    gap: 80px;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.35fr);
+    gap: clamp(48px, 8vw, 120px);
     align-items: start;
+  }
+  .about-photo-wrap {
+    position: sticky;
+    top: 120px;
   }
   .about-photo {
     aspect-ratio: 4/5;
-    border-radius: var(--radius-md);
+    max-width: 440px;
+    border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-medium);
@@ -672,19 +685,32 @@
     border: 1px solid rgba(255,255,255,0.15);
   }
 
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 680px;
+  }
+  .about-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
   .about-text p {
-    font-size: 22px;
-    line-height: 1.55;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.72;
     color: var(--ink-soft);
-    margin-bottom: 28px;
+    margin-bottom: 0;
     font-weight: 400;
+    letter-spacing: 0.01em;
   }
   .about-text p:first-child::first-letter {
     font-family: 'Instrument Serif', serif;
-    font-size: 96px;
+    font-size: clamp(72px, 8vw, 88px);
     float: left;
-    line-height: 0.85;
-    margin: 8px 16px 0 0;
+    line-height: 0.8;
+    margin: 4px 20px 8px 0;
     color: var(--accent);
     font-style: italic;
     font-weight: 400;
@@ -698,10 +724,21 @@
   .about-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 48px;
-    padding-top: 40px;
+    gap: 24px;
+    margin-top: 0;
+    padding-top: 48px;
     border-top: 1px solid var(--line);
+  }
+  .stat-item {
+    padding: 28px 24px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--line);
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .stat-item:hover {
+    border-color: rgba(214, 90, 58, 0.35);
+    box-shadow: var(--shadow-soft);
   }
   .stat-num {
     font-family: 'Fraunces', serif;
@@ -722,8 +759,8 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--ink-mute);
-    margin-top: 12px;
-    line-height: 1.5;
+    margin-top: 16px;
+    line-height: 1.65;
   }
 
   /* ============ SKILLS ============ */
@@ -1367,8 +1404,19 @@
     .container { padding: 0 32px; }
     .hero-bottom { grid-template-columns: 1fr; gap: 40px; }
     .hero-meta-block { margin-top: 0; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .about-photo { max-width: 420px; }
+    #about { padding: 120px 0 140px; }
+    #about .section-head { margin-bottom: 64px; }
+    .about-grid { grid-template-columns: 1fr; gap: 56px; }
+    .about-photo-wrap { position: static; }
+    .about-photo { max-width: 420px; margin: 0 auto; }
+    .about-text { max-width: none; }
+    .about-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 40px;
+    }
+    .stat-item { padding: 22px 16px; }
+    .stat-num { font-size: 48px; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .project { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
     .exp-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1458,23 +1506,26 @@
     }
 
     /* ABOUT */
-    .about-grid { gap: 36px; }
+    #about { padding: 90px 0 100px; }
+    #about .section-head { margin-bottom: 48px; padding-bottom: 24px; }
+    .about-grid { gap: 44px; }
     .about-photo { max-width: 100%; }
+    .about-copy { gap: 24px; margin-bottom: 40px; }
     .about-text p {
       font-size: 17px;
-      margin-bottom: 20px;
+      line-height: 1.68;
     }
     .about-text p:first-child::first-letter {
-      font-size: 64px;
-      margin: 6px 10px 0 0;
+      font-size: 56px;
+      margin: 2px 14px 4px 0;
     }
     .about-stats {
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 36px;
-      padding-top: 28px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-top: 36px;
     }
-    .about-stats > div:last-child { grid-column: 1 / -1; }
+    .about-stats > .stat-item:last-child { grid-column: auto; }
+    .stat-item { padding: 24px 20px; }
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 9px; }
 
@@ -1589,11 +1640,8 @@
     .marquee-track { font-size: 22px; gap: 24px; }
     .marquee-track span { gap: 24px; }
     .section-title { font-size: clamp(30px, 9vw, 40px); }
-    .about-stats {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .about-stats > div:last-child { grid-column: auto; }
+    .about-stats { gap: 14px; }
+    .stat-item { padding: 20px 18px; }
     .stat-num { font-size: 38px; }
     .skill-card { padding: 28px 20px; }
     .project h3 { font-size: 26px; }
@@ -1612,6 +1660,7 @@
     .skill-card:hover::before { opacity: 0; }
     .project:hover .project-visual { transform: none; }
     .about-photo:hover img { transform: none; }
+    .stat-item:hover { box-shadow: none; border-color: var(--line); }
     .exp-item:hover { padding-left: 0; }
   }
 
@@ -1732,25 +1781,29 @@
       <div class="section-aside">A short<br/>introduction</div>
     </div>
     <div class="about-grid">
-      <div class="about-photo">
-        <img src="aman.jpeg" alt="Mohammad Aman" />
-        <div class="about-photo-meta">MA · Est. 2025</div>
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="aman.jpeg" alt="Mohammad Aman" />
+          <div class="about-photo-meta">MA · Est. 2025</div>
+        </div>
       </div>
       <div class="about-text">
-        <p>I'm a developer and designer who likes living at the intersection of code, design, and infrastructure. Currently working as <em>IT Administrator &amp; DevOps engineer</em> at Fundtec, where I also build internal tools end-to-end.</p>
-        <p>My work spans <em>software development, UI/UX, and DevOps</em>. I designed and built <em>Tychi Ops</em> — an internal monitoring dashboard — entirely on my own, from UI to backend. I believe good software is the kind that quietly does its job — and that's the standard I hold my work to.</p>
+        <div class="about-copy">
+          <p>I'm a developer and designer who likes living at the intersection of code, design, and infrastructure. Currently working as <em>IT Administrator &amp; DevOps engineer</em> at Fundtec, where I also build internal tools end-to-end.</p>
+          <p>My work spans <em>software development, UI/UX, and DevOps</em>. I designed and built <em>Tychi Ops</em> — an internal monitoring dashboard — entirely on my own, from UI to backend. I believe good software is the kind that quietly does its job — and that's the standard I hold my work to.</p>
+        </div>
         <div class="about-stats">
-          <div>
+          <div class="stat-item">
             <div class="stat-num">1<em>+</em></div>
-            <div class="stat-label">Year of<br/>experience</div>
+            <div class="stat-label">Year of experience</div>
           </div>
-          <div>
+          <div class="stat-item">
             <div class="stat-num"><em>MCA</em></div>
-            <div class="stat-label">Postgraduate<br/>degree</div>
+            <div class="stat-label">Postgraduate degree</div>
           </div>
-          <div>
+          <div class="stat-item">
             <div class="stat-num">∞</div>
-            <div class="stat-label">Always<br/>learning</div>
+            <div class="stat-label">Always learning</div>
           </div>
         </div>
       </div>
