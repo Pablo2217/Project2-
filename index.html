@@ -1068,6 +1068,98 @@
     max-width: 720px;
   }
 
+  /* ============ AI TOOLS ============ */
+  .ai-tools-section {
+    background:
+      radial-gradient(ellipse 70% 45% at 100% 0%, rgba(214, 90, 58, 0.08), transparent 60%),
+      var(--bg-alt);
+  }
+
+  .ai-tools-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(40px, 7vw, 90px);
+    align-items: start;
+  }
+
+  .ai-tools-intro {
+    position: sticky;
+    top: 120px;
+  }
+
+  .ai-label {
+    display: inline-flex;
+    margin-bottom: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+  }
+
+  .ai-tools-intro h3 {
+    font-size: clamp(38px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .ai-tools-intro p {
+    color: var(--ink-soft);
+    font-size: 20px;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .ai-tools-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .ai-tool-card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(245, 243, 237, 0.72);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .ai-tool-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(214, 90, 58, 0.35);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .ai-tool-card span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    padding-top: 4px;
+  }
+
+  .ai-tool-card h4 {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .ai-tool-card p {
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  [data-theme="dark"] .ai-tool-card {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
   /* ============ TECH STACK ============ */
   .tech-section {
     padding: 100px 0;
@@ -2096,6 +2188,8 @@
     .process-steps li::after { display: none; }
     .now-inner { grid-template-columns: 1fr; gap: 20px; }
     .hero-counters { grid-template-columns: 1fr; gap: 20px; }
+    .ai-tools-grid { grid-template-columns: 1fr; }
+    .ai-tools-intro { position: static; }
   }
 
   /* Mobile (max 768px) — comprehensive optimization */
@@ -2343,6 +2437,13 @@
     .contact h2 { font-size: clamp(38px, 12vw, 56px); }
     .contact-email { font-size: clamp(18px, 6vw, 28px); }
     .exp-content h3 { font-size: 22px; }
+    .ai-tool-card {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 24px;
+    }
+    .ai-tools-intro h3 { font-size: clamp(32px, 8vw, 44px); }
+    .ai-tools-intro p { font-size: 17px; }
   }
 
   /* Touch device fixes — disable hover effects that don't translate */
@@ -2355,6 +2456,7 @@
     .about-photo:hover img { transform: none; }
     .stat-item:hover { box-shadow: none; border-color: var(--line); }
     .case-card:hover { transform: none; }
+    .ai-tool-card:hover { transform: none; }
     .learning-card:hover { transform: none; }
     .service-row:hover { padding-left: 0; }
     .exp-item:hover { padding-left: 0; }
@@ -2389,6 +2491,7 @@
       <li><a href="#now" class="menu-link">Now</a></li>
       <li><a href="#about" class="menu-link">About</a></li>
       <li><a href="#skills" class="menu-link">Skills</a></li>
+      <li><a href="#ai-tools" class="menu-link">AI Tools</a></li>
       <li><a href="#work" class="menu-link">Work</a></li>
       <li><a href="#case-studies" class="menu-link">Case studies</a></li>
       <li><a href="#learning" class="menu-link">Learning</a></li>
@@ -2410,9 +2513,10 @@
     <ul class="nav-links">
       <li><a href="#about" data-num="01" data-hover>About</a></li>
       <li><a href="#skills" data-num="02" data-hover>Skills</a></li>
-      <li><a href="#work" data-num="03" data-hover>Work</a></li>
-      <li><a href="#services" data-num="06" data-hover>Services</a></li>
-      <li><a href="#experience" data-num="07" data-hover>Experience</a></li>
+      <li><a href="#ai-tools" data-num="03" data-hover>AI</a></li>
+      <li><a href="#work" data-num="04" data-hover>Work</a></li>
+      <li><a href="#services" data-num="07" data-hover>Services</a></li>
+      <li><a href="#experience" data-num="08" data-hover>Experience</a></li>
     </ul>
     <div class="nav-actions">
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
@@ -2636,6 +2740,72 @@
   </div>
 </section>
 
+<!-- AI TOOLS -->
+<section id="ai-tools" class="ai-tools-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">03 →</span>
+      <h2 class="section-title">Building with <em>AI</em></h2>
+      <div class="section-aside">Tools, automation<br/>and smarter workflows</div>
+    </div>
+
+    <div class="ai-tools-grid">
+      <div class="ai-tools-intro">
+        <span class="ai-label">AI-assisted builder</span>
+        <h3>I use AI to build better tools, faster.</h3>
+        <p>
+          I build practical tools with AI, combining design, development, and automation
+          to create faster workflows and smarter digital products.
+        </p>
+        <p>
+          I actively explore how AI can improve real workflows — from writing cleaner code
+          and designing better interfaces to creating internal tools, automation systems,
+          dashboards, and productivity helpers.
+        </p>
+        <p>
+          For me, AI is not a shortcut. It is a creative and technical partner that helps
+          me prototype faster, debug smarter, and turn ideas into working products with
+          more speed and clarity.
+        </p>
+      </div>
+
+      <div class="ai-tools-list">
+        <div class="ai-tool-card">
+          <span>01</span>
+          <div>
+            <h4>AI-assisted Web Tools</h4>
+            <p>Building small web apps, dashboards, admin panels, and workflow tools using AI for faster planning, coding, and iteration.</p>
+          </div>
+        </div>
+
+        <div class="ai-tool-card">
+          <span>02</span>
+          <div>
+            <h4>Automation &amp; Productivity</h4>
+            <p>Using AI to simplify repetitive tasks, generate structured content, improve documentation, and speed up daily technical work.</p>
+          </div>
+        </div>
+
+        <div class="ai-tool-card">
+          <span>03</span>
+          <div>
+            <h4>Design &amp; UX Exploration</h4>
+            <p>Using AI to explore layouts, improve copy, plan user flows, and refine interface ideas before development.</p>
+          </div>
+        </div>
+
+        <div class="ai-tool-card">
+          <span>04</span>
+          <div>
+            <h4>Code Review &amp; Debugging</h4>
+            <p>Using AI to understand errors, improve code quality, find better implementation patterns, and learn new technologies faster.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TECH STACK -->
 <section id="tech" class="tech-section">
   <div class="container">
@@ -2692,7 +2862,7 @@
 <section id="work">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">03 →</span>
+      <span class="section-num">04 →</span>
       <h2 class="section-title">Selected <em>work</em></h2>
       <div class="section-aside">Things I've<br/>designed &amp; built</div>
     </div>
@@ -2817,7 +2987,7 @@
 <section id="case-studies" class="case-studies">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">04 →</span>
+      <span class="section-num">05 →</span>
       <h2 class="section-title">Project <em>case studies</em></h2>
       <div class="section-aside">How I think<br/>and build</div>
     </div>
@@ -2890,7 +3060,7 @@
 <section id="learning" class="learning-section">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">05 →</span>
+      <span class="section-num">06 →</span>
       <h2 class="section-title">Learning <em>&amp; growth</em></h2>
       <div class="section-aside">Certifications<br/>and practice</div>
     </div>
@@ -2921,7 +3091,7 @@
 <section id="services" class="services-section">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">06 →</span>
+      <span class="section-num">07 →</span>
       <h2 class="section-title">Ways I can <em>help</em></h2>
       <div class="section-aside">Available for<br/>work</div>
     </div>
@@ -2976,7 +3146,7 @@
 <section id="experience">
   <div class="container">
     <div class="section-head">
-      <span class="section-num">07 →</span>
+      <span class="section-num">08 →</span>
       <h2 class="section-title">Experience <em>&amp;</em> path</h2>
       <div class="section-aside">A short<br/>career timeline</div>
     </div>
