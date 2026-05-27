@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#f5f3ed" id="themeColorMeta" />
 <meta name="theme-color" content="#f5f3ed" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)" />
 <meta name="description" content="Mohammad Aman — Full-stack developer, UI/UX designer & DevOps engineer based in Raipur, India. Currently at Fundtec." />
@@ -49,6 +50,13 @@
     --glass-light: rgba(245, 243, 237, 0.72);
     --glass-dark: rgba(21, 20, 15, 0.58);
     --ring: rgba(214, 90, 58, 0.55);
+    /* Dark band sections (skills, marquee, contact…) — stay dark in both themes */
+    --surface-raised: #15140f;
+    --on-dark: #f5f3ed;
+    --on-dark-soft: rgba(245, 243, 237, 0.72);
+    --on-dark-muted: rgba(245, 243, 237, 0.55);
+    --on-dark-faint: rgba(245, 243, 237, 0.4);
+    --on-dark-line: rgba(255, 255, 255, 0.12);
   }
 
   [data-theme="dark"] {
@@ -61,6 +69,7 @@
     --glass-light: rgba(18, 17, 13, 0.88);
     --shadow-soft: 0 24px 50px -26px rgba(0, 0, 0, 0.55);
     --shadow-medium: 0 40px 80px -34px rgba(0, 0, 0, 0.65);
+    --surface-raised: #0c0b09;
   }
 
   [data-theme="dark"] body {
@@ -77,12 +86,71 @@
 
   [data-theme="dark"] .stat-item,
   [data-theme="dark"] .case-card,
-  [data-theme="dark"] .tech-cloud span {
+  [data-theme="dark"] .tech-cloud span,
+  [data-theme="dark"] .ai-tool-card {
     background: rgba(255, 255, 255, 0.04);
   }
 
   [data-theme="dark"] .hero-meta-block {
     background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Cursor — mix-blend breaks on dark backgrounds */
+  [data-theme="dark"] .cursor,
+  [data-theme="dark"] .cursor-ring {
+    mix-blend-mode: normal;
+    filter: none;
+  }
+
+  [data-theme="dark"] .cursor {
+    background: var(--accent);
+  }
+
+  [data-theme="dark"] .cursor-ring {
+    border-color: rgba(245, 243, 237, 0.45);
+  }
+
+  [data-theme="dark"] .cursor-ring.hover {
+    border-color: var(--accent);
+    background: rgba(214, 90, 58, 0.2);
+  }
+
+  [data-theme="dark"] *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  [data-theme="dark"] *::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(18, 17, 13, 0.9);
+  }
+
+  [data-theme="dark"] .btn-primary {
+    background: var(--on-dark);
+    color: var(--surface-raised);
+    border-color: var(--on-dark);
+  }
+
+  [data-theme="dark"] .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-dark);
+  }
+
+  [data-theme="dark"] .filter-btn.active {
+    background: var(--on-dark);
+    color: var(--surface-raised);
+    border-color: var(--on-dark);
+  }
+
+  [data-theme="dark"] .back-to-top {
+    background: var(--on-dark);
+    color: var(--surface-raised);
+    border-color: var(--on-dark);
+  }
+
+  [data-theme="dark"] .nav-cta:hover {
+    background: var(--on-dark);
+    color: var(--surface-raised);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -665,8 +733,8 @@
 
   /* ============ MARQUEE ============ */
   .marquee {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--surface-raised);
+    color: var(--on-dark);
     padding: 28px 0;
     overflow: hidden;
     border-top: 1px solid var(--line);
@@ -899,26 +967,27 @@
 
   /* ============ SKILLS ============ */
   .skills-bg {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--surface-raised);
+    color: var(--on-dark);
   }
-  .skills-bg .section-title { color: var(--bg); }
-  .skills-bg .section-head { border-color: rgba(255,255,255,0.1); }
+  .skills-bg .section-title { color: var(--on-dark); }
+  .skills-bg .section-head { border-color: var(--on-dark-line); }
   .skills-bg .section-num,
-  .skills-bg .section-aside { color: var(--ink-mute); }
+  .skills-bg .section-aside { color: var(--on-dark-muted); }
+  .skills-bg .skill-num { color: var(--on-dark-faint); }
 
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-left: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--on-dark-line);
+    border-left: 1px solid var(--on-dark-line);
   }
   .skill-card {
     padding: 48px 36px;
     transition: all 0.4s ease;
-    border-right: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid var(--on-dark-line);
+    border-bottom: 1px solid var(--on-dark-line);
     position: relative;
     overflow: hidden;
   }
@@ -943,7 +1012,7 @@
   .skill-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--ink-mute);
+    color: var(--on-dark-faint);
     letter-spacing: 0.12em;
   }
   .skill-icon {
@@ -960,10 +1029,10 @@
     font-weight: 400;
     margin-bottom: 14px;
     letter-spacing: -0.02em;
-    color: var(--bg);
+    color: var(--on-dark);
   }
   .skill-card p {
-    color: rgba(245, 243, 237, 0.6);
+    color: var(--on-dark-muted);
     font-size: 15px;
     line-height: 1.65;
     margin-bottom: 24px;
@@ -980,22 +1049,22 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: 5px 11px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid var(--on-dark-line);
     border-radius: 999px;
-    color: rgba(245, 243, 237, 0.7);
+    color: var(--on-dark-soft);
   }
 
   .featured-skills {
     margin-top: 72px;
     padding-top: 56px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--on-dark-line);
   }
   .featured-skills-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: rgba(245, 243, 237, 0.55);
+    color: var(--on-dark-faint);
     margin-bottom: 32px;
   }
   .featured-skills-grid {
@@ -1009,12 +1078,12 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: rgba(245, 243, 237, 0.85);
+    color: var(--on-dark-soft);
     margin-bottom: 10px;
   }
   .skill-meter div {
     height: 6px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--on-dark-line);
     border-radius: 999px;
     overflow: hidden;
   }
@@ -1763,29 +1832,29 @@
   }
 
   .muted-case {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--surface-raised);
+    color: var(--on-dark);
   }
 
   .muted-case h3 {
-    color: var(--bg);
+    color: var(--on-dark);
   }
 
   .muted-case p,
   .muted-case .case-top {
-    color: rgba(245, 243, 237, 0.72);
+    color: var(--on-dark-soft);
   }
 
   .muted-case .case-points div {
-    border-color: rgba(245, 243, 237, 0.18);
+    border-color: var(--on-dark-line);
   }
 
   .muted-case .case-points p {
-    color: rgba(245, 243, 237, 0.65);
+    color: var(--on-dark-muted);
   }
 
   .muted-case .case-link {
-    color: var(--bg);
+    color: var(--on-dark);
     border-bottom-color: var(--gold);
   }
 
@@ -1882,8 +1951,8 @@
   /* ============ RESUME CTA ============ */
   .resume-cta {
     padding: 90px 0;
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--surface-raised);
+    color: var(--on-dark);
   }
 
   .resume-box {
@@ -1914,7 +1983,7 @@
   }
 
   .resume-box p {
-    color: rgba(245, 243, 237, 0.72);
+    color: var(--on-dark-soft);
     font-size: 19px;
     line-height: 1.55;
     max-width: 520px;
@@ -1927,20 +1996,20 @@
   }
 
   .resume-cta .btn-outline {
-    color: var(--bg);
-    border-color: rgba(245, 243, 237, 0.35);
+    color: var(--on-dark);
+    border-color: var(--on-dark-line);
   }
 
   .resume-cta .btn-outline:hover {
-    background: rgba(245, 243, 237, 0.08);
-    border-color: var(--bg);
-    color: var(--bg);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--on-dark);
+    color: var(--on-dark);
   }
 
   /* ============ CONTACT ============ */
   .contact {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--surface-raised);
+    color: var(--on-dark);
     padding: 180px 0 80px;
     position: relative;
     overflow: hidden;
@@ -1960,7 +2029,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.22em;
-    color: var(--ink-mute);
+    color: var(--on-dark-muted);
     margin-bottom: 40px;
     text-align: center;
   }
@@ -1989,8 +2058,8 @@
     font-family: 'Instrument Serif', serif;
     font-size: clamp(28px, 4.5vw, 56px);
     font-style: italic;
-    color: var(--bg);
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    color: var(--on-dark);
+    border-bottom: 1px solid var(--on-dark-line);
     padding-bottom: 8px;
     display: inline-block;
     transition: all 0.3s;
@@ -2008,19 +2077,19 @@
     gap: 40px;
     margin-top: 100px;
     padding-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--on-dark-line);
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--ink-mute);
+    color: var(--on-dark-muted);
   }
   .contact-bottom-block .label {
     margin-bottom: 12px;
-    color: rgba(245, 243, 237, 0.4);
+    color: var(--on-dark-faint);
   }
   .contact-bottom-block a, .contact-bottom-block .value {
-    color: var(--bg);
+    color: var(--on-dark);
     display: block;
     margin-bottom: 6px;
     transition: color 0.2s;
@@ -2043,10 +2112,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid var(--on-dark-line);
     border-radius: 999px;
-    color: var(--bg) !important;
-    background: rgba(255,255,255,0.06);
+    color: var(--on-dark) !important;
+    background: rgba(255, 255, 255, 0.06);
     transition: all 0.25s ease;
     position: relative;
     z-index: 2;
@@ -2055,7 +2124,7 @@
   .social-link:hover {
     background: var(--accent);
     border-color: var(--accent);
-    color: var(--bg) !important;
+    color: var(--on-dark) !important;
     transform: translateY(-2px);
     box-shadow: 0 10px 24px -10px rgba(214, 90, 58, 0.6);
   }
@@ -2125,9 +2194,9 @@
 
   /* ============ FOOTER ============ */
   footer {
-    background: var(--ink);
-    color: var(--ink-mute);
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--surface-raised);
+    color: var(--on-dark-muted);
+    border-top: 1px solid var(--on-dark-line);
     padding: 32px 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -2404,7 +2473,7 @@
       margin-top: 64px;
       text-align: left;
     }
-    .contact-bottom-block { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .contact-bottom-block { padding-bottom: 20px; border-bottom: 1px solid var(--on-dark-line); }
     .contact-bottom-block:last-child { border-bottom: none; padding-bottom: 0; }
 
     /* FOOTER */
@@ -2629,6 +2698,7 @@
         <div class="about-copy">
           <p>I'm a developer and designer who likes living at the intersection of code, design, and infrastructure. Currently working as <em>IT Administrator &amp; DevOps engineer</em> at Fundtec, where I also build internal tools end-to-end.</p>
           <p>My work spans <em>software development, UI/UX, and DevOps</em>. I designed and built <em>Tychi Ops</em> — an internal monitoring dashboard — entirely on my own, from UI to backend. I believe good software is the kind that quietly does its job — and that's the standard I hold my work to.</p>
+          <p>I also work <em>AI-assisted</em> — using it to plan faster, write cleaner code, explore UI ideas, and build small tools and automations that save real time. For me, AI is a practical partner in the workflow: it helps me ship thoughtful products quicker, not replace the thinking behind them.</p>
         </div>
         <div class="about-stats">
           <div class="stat-item">
@@ -3361,12 +3431,15 @@
   const themeToggle = document.getElementById('themeToggle');
 
   function applyTheme(theme) {
+    const metaTheme = document.getElementById('themeColorMeta');
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       if (themeToggle) themeToggle.textContent = '☀';
+      if (metaTheme) metaTheme.setAttribute('content', '#12110d');
     } else {
       document.documentElement.removeAttribute('data-theme');
       if (themeToggle) themeToggle.textContent = '◐';
+      if (metaTheme) metaTheme.setAttribute('content', '#f5f3ed');
     }
     localStorage.setItem('theme', theme === 'dark' ? 'dark' : 'light');
   }
