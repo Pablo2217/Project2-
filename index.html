@@ -96,6 +96,20 @@
     background: rgba(255, 255, 255, 0.04);
   }
 
+  [data-theme="dark"] .cursor,
+  [data-theme="dark"] .cursor-ring {
+    mix-blend-mode: normal;
+    filter: none;
+  }
+
+  [data-theme="dark"] .cursor {
+    background: var(--accent);
+  }
+
+  [data-theme="dark"] .cursor-ring {
+    border-color: rgba(245, 243, 237, 0.45);
+  }
+
   [data-theme="dark"] .cursor-ring.hover {
     border-color: var(--accent);
     background: rgba(214, 90, 58, 0.2);
@@ -243,38 +257,29 @@
   /* ============ CUSTOM CURSOR ============ */
   .cursor {
     position: fixed;
-    left: 0;
-    top: 0;
     width: 8px;
     height: 8px;
-    background: var(--accent);
+    background: var(--ink);
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
-    mix-blend-mode: normal;
-    filter: none;
-    will-change: transform;
-    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, background 0.2s;
+    transition: transform 0.15s ease, width 0.2s, height 0.2s, background 0.2s;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    filter: invert(1);
   }
   .cursor-ring {
     position: fixed;
-    left: 0;
-    top: 0;
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(21, 20, 15, 0.35);
+    border: 1px solid var(--ink);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    mix-blend-mode: normal;
-    filter: none;
-    will-change: transform;
-    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     transition: width 0.25s ease, height 0.25s ease, border-color 0.25s;
-  }
-  [data-theme="dark"] .cursor-ring {
-    border-color: rgba(245, 243, 237, 0.4);
+    mix-blend-mode: difference;
+    filter: invert(1);
   }
   .cursor.hover { width: 0; height: 0; }
   .cursor-ring.hover {
@@ -3658,40 +3663,37 @@
 <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
 <script>
-  // ===== CUSTOM CURSOR (rAF only on move — no infinite loop) =====
+  // ===== CUSTOM CURSOR =====
   const cursor = document.querySelector('.cursor');
   const ring = document.querySelector('.cursor-ring');
   let mouseX = 0, mouseY = 0;
   let ringX = 0, ringY = 0;
-  let cursorTicking = false;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  if (!finePointer || !cursor || !ring) {
+  if (!cursor || !ring) {
     document.body.style.cursor = 'auto';
   }
 
-  function moveCursor() {
-    cursorTicking = false;
-    if (!cursor || !ring) return;
-    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-  }
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (cursor) {
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    }
+  }, { passive: true });
 
-  if (finePointer && cursor && ring) {
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!cursorTicking) {
-        cursorTicking = true;
-        requestAnimationFrame(moveCursor);
-      }
-    }, { passive: true });
+  function animateRing() {
+    if (!ring) return;
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
   }
+  if (ring) animateRing();
 
   // Hover state on interactive elements
-  if (finePointer && cursor && ring) {
+  if (cursor && ring) {
     document.querySelectorAll('a, button, [data-hover]').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.classList.add('hover');
