@@ -267,7 +267,8 @@
 
   @media (max-width: 860px) {
     body { cursor: auto; }
-    a, button, .menu-toggle, .theme-toggle, .social-link, .back-to-top, .quick-contact, .filter-btn { cursor: pointer; }
+    a, button, .menu-toggle, .theme-toggle, .social-link, .back-to-top, .quick-contact, .filter-btn, .form-submit, .form-field select { cursor: pointer; }
+    .form-field input, .form-field textarea { cursor: text; }
     .cursor, .cursor-ring { display: none; }
   }
 
@@ -2077,6 +2078,150 @@
     color: var(--on-dark);
   }
 
+  /* ============ CONTACT FORM ============ */
+  .contact-form-wrap {
+    max-width: 640px;
+    margin: 0 auto 80px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--on-dark-line);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .contact-form-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--on-dark-muted);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .contact-form {
+    display: grid;
+    gap: 18px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--on-dark-faint);
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--on-dark-line);
+    border-radius: var(--radius-sm);
+    color: var(--on-dark);
+    transition: all 0.25s ease;
+    width: 100%;
+    font-weight: 400;
+    cursor: text;
+  }
+  .form-field select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23f5f3ed' opacity='0.6' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(214, 90, 58, 0.15);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--on-dark-faint);
+    font-style: italic;
+  }
+  .form-field textarea {
+    resize: vertical;
+    min-height: 130px;
+    font-family: 'Fraunces', serif;
+  }
+  .form-submit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 16px 28px;
+    background: var(--accent);
+    color: var(--on-dark);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .form-submit:hover:not(:disabled) {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px rgba(214, 90, 58, 0.55);
+  }
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  .form-status {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    min-height: 18px;
+    transition: color 0.3s;
+  }
+  .form-status.success { color: #2bb673; }
+  .form-status.error { color: #e85d3a; }
+  .form-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px auto 32px;
+    max-width: 400px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--on-dark-faint);
+  }
+  .form-divider::before,
+  .form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--on-dark-line);
+  }
+
   /* ============ CONTACT ============ */
   .contact {
     background: var(--surface-raised);
@@ -2538,6 +2683,8 @@
     .contact-email {
       font-size: clamp(22px, 6vw, 36px);
     }
+    .contact-form-wrap { padding: 28px 24px; margin-bottom: 56px; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; }
     .contact-email-wrap { margin-bottom: 56px; }
     .contact-bottom {
       grid-template-columns: 1fr;
@@ -3392,6 +3539,55 @@
   <div class="container">
     <div class="contact-eyebrow">— Let's build something good —</div>
     <h2>Have a project<br/>in <em>mind</em>?</h2>
+
+    <div class="contact-form-wrap">
+      <div class="contact-form-title">— Send me a message —</div>
+      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YAHAN_APNA_ACCESS_KEY_PASTE_KAR" />
+        <input type="hidden" name="subject" value="New message from your portfolio site" />
+        <input type="hidden" name="from_name" value="Aman Portfolio" />
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="topic">What's this about?</label>
+          <select id="topic" name="topic" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="Project / Freelance">Project / Freelance work</option>
+            <option value="Full-time opportunity">Full-time opportunity</option>
+            <option value="Dashboard / Internal tool">Dashboard / Internal tool</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Just saying hi">Just saying hi</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me a little about what you're working on..." required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="formSubmit">
+          <span class="btn-text">Send message</span>
+          <span class="arrow">↗</span>
+        </button>
+
+        <div class="form-status" id="formStatus" aria-live="polite"></div>
+      </form>
+
+      <div class="form-divider">or email directly</div>
+    </div>
+
     <div class="contact-email-wrap">
       <a href="mailto:mramanking@gmail.com" class="contact-email" data-hover>mramanking@gmail.com</a>
     </div>
@@ -3681,6 +3877,51 @@
   }
   updateTime();
   setInterval(updateTime, 1000);
+
+  // ===== CONTACT FORM =====
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const formSubmit = document.getElementById('formSubmit');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btnText = formSubmit.querySelector('.btn-text');
+      const originalText = btnText.textContent;
+
+      formSubmit.disabled = true;
+      btnText.textContent = 'Sending...';
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          formStatus.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          formStatus.className = 'form-status success';
+          contactForm.reset();
+          btnText.textContent = 'Sent ✓';
+          setTimeout(() => {
+            btnText.textContent = originalText;
+            formSubmit.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
+        formStatus.textContent = '✗ Something went wrong. Try emailing directly.';
+        formStatus.className = 'form-status error';
+        btnText.textContent = originalText;
+        formSubmit.disabled = false;
+      }
+    });
+  }
 
   // ===== SCROLL REVEAL =====
   function revealSection(section) {
